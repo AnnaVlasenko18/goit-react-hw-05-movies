@@ -5,7 +5,7 @@ export const TitleHome = styled('h1')`
   margin-bottom: ${p => p.theme.spacing(9)};
   margin-top: ${p => p.theme.spacing(5)};
   font-size: ${p => p.theme.fontSize.fs28};
-  color: ${p => p.theme.colors.textLink};
+  color: ${p => p.theme.colors.active};
   font-weight: 900;
 `;
 
