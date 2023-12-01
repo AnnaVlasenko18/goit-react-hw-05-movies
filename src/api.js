@@ -8,7 +8,7 @@ export async function getTrendingMovies() {
   return response.data;
 }
 
-export async function searchMavies(query) {
+export async function searchMovies(query) {
   const response = await axios(
     `/search/movie?api_key=${API_KEY}&query=${query}`
   );
@@ -25,6 +25,6 @@ export async function getMovieCredits(movie_id) {
 }
 
 export async function getMovieReviews(movie_id) {
-  const response = await axios(`/movie/{movie_id}/reviews$api_key=${API_KEY}`);
+  const response = await axios(`/movie/${movie_id}/reviews$api_key=${API_KEY}`);
   return response.data;
 }

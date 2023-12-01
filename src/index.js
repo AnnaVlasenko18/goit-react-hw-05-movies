@@ -8,10 +8,11 @@ import { GlobalStyle } from './components/GlogalStyle';
 const theme = {
   colors: {
     textLink: '#ffffff',
-    active: '#0A0A0A',
+    active: '#24292e',
   },
 
   fontSize: {
+    fs14: '14px',
     fs20: '20px',
     fs24: '24px',
     fs28: '28px',

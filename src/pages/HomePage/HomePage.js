@@ -1,6 +1,6 @@
 import { getTrendingMovies } from 'api';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Blocks } from 'react-loader-spinner';
 import { MdOutlineNoPhotography } from 'react-icons/md';
 import {
@@ -8,9 +8,9 @@ import {
   ListHome,
   TitleHome,
   ItemHome,
-  // LinkHome,
+  LinkHome,
   InfoHome,
-} from './HomeStyled';
+} from './HomePageStyled';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -59,7 +59,7 @@ export default function Home() {
 
             return (
               <ItemHome key={index}>
-                <Link to={`movies/${id}`} state={{ from: location }}>
+                <LinkHome to={`movies/${id}`} state={{ from: location }}>
                   {poster_path ? (
                     <img src={photo} alt={original_title} />
                   ) : (
@@ -72,7 +72,7 @@ export default function Home() {
                     />
                   )}
                   <InfoHome>{original_title}</InfoHome>
-                </Link>
+                </LinkHome>
               </ItemHome>
             );
           })}

@@ -34,15 +34,18 @@ export const ItemHome = styled('li')`
     0px 2.7px 6.7px rgba(0, 0, 0, 0.048), 0px 12px 30px rgba(0, 0, 0, 0.08);
 `;
 
-// export const LinkHome = styled('Link')`
-//   text-decoration: none;
-//   font-size: ${p => p.theme.fontSize.fs20};
-//   color: ${p => p.theme.colors.textLink};
-// `;
+export const LinkHome = styled(Link)`
+  text-decoration: none;
+  font-size: ${p => p.theme.fontSize.fs20};
+  color: ${p => p.theme.colors.textLink};
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const InfoHome = styled('div')`
   padding: ${p => p.theme.spacing(2)};
   color: ${p => p.theme.colors.active};
   font-size: ${p => p.theme.fontSize.fs20};
-  text-decoration: none;
 `;

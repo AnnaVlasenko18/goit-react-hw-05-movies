@@ -17,6 +17,7 @@ export const StyledNav = styled('nav')`
   font-weight: 800;
   font-size: ${p => p.theme.fontSize.fs24};
 `;
+
 export const StyledNavLink = styled(NavLink)`
   color: ${p => p.theme.colors.textLink};
   text-decoration: none;
