@@ -1,32 +1,41 @@
 import { useRef } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
-import { DetailsMovie } from 'components/MovieDetails/MovieDetails';
+import { MovieDetails } from 'components/MovieDetails/MovieDetails';
+import {
+  LinkDetailsPage,
+  TextDetailsPage,
+  ListDetailsPage,
+  BackLinkDetailsPage,
+  ContainerDetailsPage,
+} from './MovieDetailsPageStyled';
 
-export default function MovieDetails() {
+export default function MovieDetailsPage() {
   const location = useLocation();
   const backLink = useRef(location);
 
-  <>
-    <Link to={backLink.current.state?.from ?? '/movies'}>
-      <IoIosArrowBack
-        style={{ width: '16px', height: '16px', verticalAlign: 'bottom' }}
-      />{' '}
-      Go back
-    </Link>
-    <DetailsMovie />
-    <div>
-      <p>Additional information:</p>
-      <ul>
-        <li>
-          <link to="cast">Cact</link>
-        </li>
-        <li>
-          <link to="reviews">Reviews</link>
-        </li>
-      </ul>
-    </div>
+  return (
+    <ContainerDetailsPage>
+      <LinkDetailsPage to={backLink.current.state?.from ?? '/movies'}>
+        <IoIosArrowBack
+          style={{ width: '16px', height: '16px', verticalAlign: 'bottom' }}
+        />
+        Go back
+      </LinkDetailsPage>
+      <MovieDetails />
+      <div>
+        <TextDetailsPage>Additional information:</TextDetailsPage>
+        <ListDetailsPage>
+          <li>
+            <BackLinkDetailsPage to="cast">Cast</BackLinkDetailsPage>
+          </li>
+          <li>
+            <BackLinkDetailsPage to="reviews">Reviews</BackLinkDetailsPage>
+          </li>
+        </ListDetailsPage>
+      </div>
 
-    <Outlet />
-  </>;
+      <Outlet />
+    </ContainerDetailsPage>
+  );
 }

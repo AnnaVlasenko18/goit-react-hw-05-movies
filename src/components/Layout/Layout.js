@@ -1,6 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import { GlobalStyle } from 'components/GlogalStyle';
-import { StyledNavLink, StyledHeader, StyledNav } from './LayoutStyle';
+import {
+  StyledNavLink,
+  StyledHeader,
+  StyledNav,
+  ContentHeader,
+} from './LayoutStyle';
 
 export const Layout = () => {
   return (
@@ -12,7 +17,9 @@ export const Layout = () => {
         </StyledNav>
       </StyledHeader>
 
-      <Outlet />
+      <ContentHeader>
+        <Outlet />
+      </ContentHeader>
 
       <GlobalStyle />
     </>

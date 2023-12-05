@@ -16,8 +16,8 @@ ol{
 }
 
 body {
-  background: #999999;
-      margin: 0;
+  background: #003366;
+  margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;

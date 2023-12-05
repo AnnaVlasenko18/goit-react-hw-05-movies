@@ -9,7 +9,7 @@ import {
   InfoMovies,
   ItemMovies,
   ListMovies,
-  SecondaryText,
+  TextSecondary,
   LinkMovies,
   FormMovies,
   InputMovies,
@@ -24,7 +24,7 @@ export default function Movies() {
   const searchedMovie = params.get('movie') ?? '';
 
   useEffect(() => {
-    const FeachMovie = async () => {
+    const feachMovie = async () => {
       setLoading(true);
       try {
         if (!searchedMovie) {
@@ -42,7 +42,7 @@ export default function Movies() {
       }
     };
 
-    FeachMovie();
+    feachMovie();
   }, [searchedMovie]);
 
   const location = useLocation();
@@ -90,7 +90,7 @@ export default function Movies() {
 
                 return (
                   <ItemMovies key={index}>
-                    <LinkMovies to={`movies/${id}`} state={{ from: location }}>
+                    <LinkMovies to={`${id}`} state={{ from: location }}>
                       {poster_path ? (
                         <img src={photo} alt={original_title} />
                       ) : (
@@ -111,7 +111,7 @@ export default function Movies() {
         </ContainerMovies>
       )}
       {movies.length === 0 && !isLoading && searchedMovie && (
-        <SecondaryText>Movie "{searchedMovie}" not found.</SecondaryText>
+        <TextSecondary>Movie "{searchedMovie}" not found.</TextSecondary>
       )}
     </>
   );

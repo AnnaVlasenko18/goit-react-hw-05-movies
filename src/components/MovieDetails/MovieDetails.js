@@ -1,9 +1,20 @@
-import { getMovieDetals } from 'api';
+import { getMovieDetails } from 'api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Blocks } from 'react-loader-spinner';
+import {
+  ContainerDetails,
+  TitleDetails,
+  PhotoDetails,
+  SecondaryTitelDetails,
+  TextDetails,
+  SpanDetails,
+} from './MovieDetailsStyled';
 
-export const DetailsMovie = () => {
+import React from 'react';
+import StarRatings from 'react-star-ratings';
+
+export const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
@@ -14,7 +25,7 @@ export const DetailsMovie = () => {
     const fetchDetails = async () => {
       setIsLoading(true);
       try {
-        const response = await getMovieDetals(movieId);
+        const response = await getMovieDetails(movieId);
         setMovie({ ...response });
       } catch (error) {
         setError(error);
@@ -49,21 +60,34 @@ export const DetailsMovie = () => {
           wrapperClass="blocks-wrapper"
         />
       )}
-      <div>
+
+      {movie && (
         <div>
-          <img src={makeImgURL()} alt={movie.title} />
-          <div>
-            <h1>{movie.title}</h1>
-            <p>User score: {getAverage()}%</p>
-            <h3>Overview</h3>
-            <p>{movie.overview}</p>
-            <h3>Genres</h3>
-            {movie.genres.map(({ name }, index) => (
-              <span key={index}>{name} </span>
-            ))}
-          </div>
+          <ContainerDetails>
+            <PhotoDetails src={makeImgURL()} alt={movie.title}></PhotoDetails>
+            <div>
+              <TitleDetails>{movie.title}</TitleDetails>
+
+              <StarRatings
+                rating={getAverage() / 20}
+                starRatedColor="gold"
+                changeRating={newRating => console.log(newRating)}
+                numberOfStars={5}
+                name="rating"
+              />
+
+              <TextDetails>User score: {getAverage()}%</TextDetails>
+
+              <SecondaryTitelDetails>Overview</SecondaryTitelDetails>
+              <TextDetails>{movie.overview}</TextDetails>
+              <SecondaryTitelDetails>Genres</SecondaryTitelDetails>
+              {movie.genres.map(({ name }, index) => (
+                <SpanDetails key={index}>{name} </SpanDetails>
+              ))}
+            </div>
+          </ContainerDetails>
         </div>
-      </div>
+      )}
     </>
   );
 };
